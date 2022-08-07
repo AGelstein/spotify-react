@@ -1,8 +1,8 @@
-import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ErrorBoundary from "./ErrorBoundary";
 
-const CLIENT_ID = "23437448b8b24b31b3a5adb3770493a6";
+const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
 const REDIRECT_URI = "http://localhost:3000";
 const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
 const RESPONSE_TYPE = "token";
@@ -64,25 +64,27 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Spotify React</h1>
-        {!token ? (
-          <a
-            href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-          >
-            Login to Spotify
-          </a>
-        ) : (
-          <button onClick={logout}>Logout</button>
-        )}
-        <form onSubmit={searchArtists}>
-          <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
-          <button type={"submit"}>Search</button>
-        </form>
-        {renderArtists()}
-      </header>
-    </div>
+    <ErrorBoundary>
+      <div className="App">
+        <header className="App-header">
+          <h1>Spotify React</h1>
+          {!token ? (
+            <a
+              href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+            >
+              Login to Spotify
+            </a>
+          ) : (
+            <button onClick={logout}>Logout</button>
+          )}
+          <form onSubmit={searchArtists}>
+            <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
+            <button type={"submit"}>Search</button>
+          </form>
+          {renderArtists()}
+        </header>
+      </div>
+    </ErrorBoundary>
   );
 }
 
