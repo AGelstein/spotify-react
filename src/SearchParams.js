@@ -4,7 +4,7 @@ import axios from "axios";
 const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
-  console.log("searchparams", { token });
+  console.log("searchparams", { artists });
 
   const searchArtists = async (e) => {
     e.preventDefault();
@@ -38,7 +38,12 @@ const SearchParams = ({ token }) => {
     <div>
       <form onSubmit={searchArtists}>
         <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
-        <button type={"submit"}>Search</button>
+        <button
+          className="px-2  bg-slate-100 hover:bg-gray-700"
+          type={"submit"}
+        >
+          Search
+        </button>
       </form>
       {renderArtists()}
     </div>
