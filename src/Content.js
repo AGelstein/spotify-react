@@ -1,7 +1,5 @@
 import SearchParams from "./SearchParams";
 
-SearchParams;
-
 const Content = ({ token }) => {
   console.log("consoletoken", token);
   return (

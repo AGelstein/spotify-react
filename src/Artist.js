@@ -4,7 +4,11 @@ const Artist = (props) => {
   return (
     <div className="relative block">
       {images.length ? (
-        <img width={"100%"} src={images[0].url} alt="" />
+        <img
+          className="object-cover object-center w-full h-full"
+          src={images[0].url}
+          alt=""
+        />
       ) : (
         <div>No Image</div>
       )}
