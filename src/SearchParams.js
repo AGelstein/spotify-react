@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Results from "./Results";
 
 const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
@@ -21,21 +22,8 @@ const SearchParams = ({ token }) => {
     setArtists(data.artists.items);
   };
 
-  const renderArtists = () => {
-    return artists.map((artist) => (
-      <div key={artist.id}>
-        {artist.images.length ? (
-          <img width={"100%"} src={artist.images[0].url} alt="" />
-        ) : (
-          <div>No Image</div>
-        )}
-        {artist.name}
-      </div>
-    ));
-  };
-
   return (
-    <div>
+    <div className="my-0 mx-auto w-11/12">
       <form onSubmit={searchArtists}>
         <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
         <button
@@ -45,7 +33,8 @@ const SearchParams = ({ token }) => {
           Search
         </button>
       </form>
-      {renderArtists()}
+      <Results artists={artists} />
+      {/* <Artist artists={artists} /> */}
     </div>
   );
 };
