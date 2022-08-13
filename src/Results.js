@@ -9,7 +9,7 @@ const Results = ({ artists }) => {
         artists.map((artist) => {
           return (
             <Artist
-              key={artist.key}
+              key={artist.id}
               images={artist.images}
               name={artist.name}
               id={artist.id}

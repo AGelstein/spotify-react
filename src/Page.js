@@ -4,10 +4,8 @@ import Content from "./Content";
 
 const Page = () => {
   const [token, setToken] = useState("");
-  console.log("page + token", { token });
 
   useEffect(() => {
-    console.log("useEffect");
     const hash = window.location.hash;
     let newToken = window.localStorage.getItem("token");
 

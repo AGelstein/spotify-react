@@ -9,14 +9,13 @@ const Header = ({ token, setToken }) => {
     window.localStorage.removeItem("token");
   };
 
-  console.log("header", token);
-
   return (
     <div className="fixed bg-blue-600 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center">
       <router-link to="/" class="text-2xl text-white">
         Spotify React App
       </router-link>
       <div className="text-white px-3 rounded py-1">
+        {console.log(token)}
         {!token ? (
           <a
             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
