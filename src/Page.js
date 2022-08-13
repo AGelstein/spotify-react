@@ -9,8 +9,6 @@ const Page = () => {
     const hash = window.location.hash;
     let newToken = window.localStorage.getItem("token");
 
-    console.log("i fire");
-
     if (!newToken && hash) {
       newToken = hash
         .substring(1)
@@ -25,7 +23,6 @@ const Page = () => {
     setToken(newToken);
     return () => {
       localStorage.removeItem("token");
-      console.log("clearing localStorage");
     };
   }, []);
 

@@ -5,6 +5,7 @@ import Results from "./Results";
 const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
+  const [hasBeenRun, setHasBeenRun] = useState(false);
 
   const searchArtists = async (e) => {
     e.preventDefault();
@@ -19,12 +20,17 @@ const SearchParams = ({ token }) => {
     });
 
     setArtists(data.artists.items);
+    setHasBeenRun(true);
   };
 
   return (
     <div className="my-0 mx-auto w-11/12">
       <form onSubmit={searchArtists}>
-        <input type="text" onChange={(e) => setSearchKey(e.target.value)} />
+        <input
+          type="text"
+          className="h-8 pt-1"
+          onChange={(e) => setSearchKey(e.target.value)}
+        />
         <button
           className="h-full inline-block ml-2 b-1 px-6 py-2.5 bg-blue-600 text-white
            font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700
@@ -36,7 +42,7 @@ const SearchParams = ({ token }) => {
         </button>
       </form>
       <div className="mt-4">
-        <Results artists={artists} />
+        <Results hasBeenRun={hasBeenRun} artists={artists} />
       </div>
     </div>
   );
