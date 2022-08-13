@@ -3,7 +3,7 @@ import Header from "./Header";
 import Content from "./Content";
 
 const Page = () => {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const hash = window.location.hash;
@@ -25,6 +25,7 @@ const Page = () => {
     setToken(newToken);
     return () => {
       localStorage.removeItem("token");
+      console.log("clearing localStorage");
     };
   }, []);
 
