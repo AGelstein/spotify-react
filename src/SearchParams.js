@@ -6,6 +6,9 @@ const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
   const [hasBeenRun, setHasBeenRun] = useState(false);
+  const [offset, setOffset] = useState(0);
+
+  console.log("offset in parent ", offset);
 
   const searchArtists = async (e) => {
     e.preventDefault();
@@ -14,6 +17,8 @@ const SearchParams = ({ token }) => {
         Authorization: `Bearer ${token}`,
       },
       params: {
+        limit: 6,
+        offset: offset,
         q: searchKey,
         type: "artist",
       },
@@ -42,7 +47,13 @@ const SearchParams = ({ token }) => {
         </button>
       </form>
       <div className="mt-4">
-        <Results hasBeenRun={hasBeenRun} artists={artists} />
+        <Results
+          hasBeenRun={hasBeenRun}
+          artists={artists}
+          offset={offset}
+          setOffset={setOffset}
+          searchArtists={searchArtists}
+        />
       </div>
     </div>
   );
