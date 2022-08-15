@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Results from "./Results";
 
@@ -9,29 +9,24 @@ const SearchParams = ({ token }) => {
   const [offset, setOffset] = useState(0);
 
   //TODO need to export this function to a separate file
-  const searchArtists = async (e) => {
+  const searchArtists = async (e, newOffset) => {
     e.preventDefault();
-    console.log("offset in parent ", offset);
     const { data } = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       params: {
         limit: 6,
-        offset: offset,
+        offset: newOffset,
         q: searchKey,
         type: "artist",
       },
     });
 
     setArtists(data.artists.items);
+    setOffset(newOffset);
     setHasBeenRun(true);
   };
-
-  // IF YOU WANT PAGES TO STAY IN SYNC YOU GOTTA USE THE USEEFFECT
-  useEffect(() => {
-    console.log("offset inside useEffect", offset);
-  }, [offset]);
 
   return (
     <div className="my-0 mx-auto w-11/12">

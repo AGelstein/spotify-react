@@ -1,14 +1,9 @@
 import Artist from "./Artist";
 
-//TODO remove offset since it's no longer needed
-const Results = ({ hasBeenRun, artists, setOffset, offset, searchArtists }) => {
+const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
   const pageFwd = (e) => {
     e.preventDefault();
-    //TODO rename os to offset
-    console.log("offset in child pre-add", offset);
-    setOffset((x) => x + 6);
-    console.log("offset in child post-add", offset);
-    searchArtists(e);
+    searchArtists(e, offset + 6);
   };
 
   return (
