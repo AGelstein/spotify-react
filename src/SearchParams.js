@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Results from "./Results";
 
@@ -8,6 +8,7 @@ const SearchParams = ({ token }) => {
   const [hasBeenRun, setHasBeenRun] = useState(false);
   const [offset, setOffset] = useState(0);
 
+  //TODO need to export this function to a separate file
   const searchArtists = async (e) => {
     e.preventDefault();
     console.log("offset in parent ", offset);
@@ -26,6 +27,11 @@ const SearchParams = ({ token }) => {
     setArtists(data.artists.items);
     setHasBeenRun(true);
   };
+
+  // IF YOU WANT PAGES TO STAY IN SYNC YOU GOTTA USE THE USEEFFECT
+  useEffect(() => {
+    console.log("offset inside useEffect", offset);
+  }, [offset]);
 
   return (
     <div className="my-0 mx-auto w-11/12">
