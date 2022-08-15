@@ -2,11 +2,10 @@ import Artist from "./Artist";
 
 const Results = ({ hasBeenRun, artists, setOffset, offset, searchArtists }) => {
   const pageFwd = (e) => {
-    e.preventDefault;
-    console.log("pageFwd");
+    e.preventDefault();
     setOffset(offset + 5);
-    searchArtists();
-    console.log(offset);
+    console.log("set offset in child " + offset);
+    searchArtists(e);
   };
 
   return (

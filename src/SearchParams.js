@@ -8,10 +8,9 @@ const SearchParams = ({ token }) => {
   const [hasBeenRun, setHasBeenRun] = useState(false);
   const [offset, setOffset] = useState(0);
 
-  console.log("offset in parent ", offset);
-
   const searchArtists = async (e) => {
     e.preventDefault();
+    console.log("offset in parent ", offset);
     const { data } = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
         Authorization: `Bearer ${token}`,
