@@ -1,4 +1,4 @@
-What I want to use: React, Tailwind, maybe nextjs? cypress? tests.
+What I want to use: React, Tailwind, pure react paging
 
 # Getting Started with Create React App
 
