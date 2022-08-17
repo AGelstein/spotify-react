@@ -9,7 +9,11 @@ const SearchParams = ({ token }) => {
   const [offset, setOffset] = useState(0);
 
   //TODO need to export this function to a separate file
-  const searchArtists = async (e, newOffset) => {
+  const searchArtists = async (e, newOffset = 0) => {
+    if (newOffset < 0) {
+      newOffset = 0;
+    }
+
     e.preventDefault();
     const { data } = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
@@ -30,7 +34,7 @@ const SearchParams = ({ token }) => {
 
   return (
     <div className="my-0 mx-auto w-11/12">
-      <form onSubmit={searchArtists}>
+      <form onSubmit={(e) => searchArtists(e, 0)}>
         <input
           type="text"
           className="h-8 pt-1"

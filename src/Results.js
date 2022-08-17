@@ -6,6 +6,12 @@ const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
     searchArtists(e, offset + 6);
   };
 
+  const pageBack = (e) => {
+    e.preventDefault();
+    console.log("childoffset", offset);
+    searchArtists(e, offset - 6);
+  };
+
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {!artists.length && hasBeenRun ? (
@@ -23,7 +29,10 @@ const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
         })
       )}
       <div className="inline-flex">
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+        <button
+          onClick={(e) => pageBack(e)}
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l"
+        >
           Prev
         </button>
         <button
