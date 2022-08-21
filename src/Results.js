@@ -30,7 +30,14 @@ const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
           })
         )}
       </div>
-      <div className="flex space-x-4 justify-between mt-4">
+      {console.log(artists.length)}
+      <div
+        className={
+          artists.length === 0
+            ? "invisible"
+            : "flex space-x-4 justify-between mt-4"
+        }
+      >
         <button
           onClick={(e) => pageBack(e)}
           className=" bg-blue-600 text-white
