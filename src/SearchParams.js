@@ -1,12 +1,20 @@
 import { useState } from "react";
 import axios from "axios";
 import Results from "./Results";
+import Pagination from "./Pagination";
 
 const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
   const [hasBeenRun, setHasBeenRun] = useState(false);
   const [offset, setOffset] = useState(0);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
+  const indexOfLastRecord = currentPage * recordsPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+  const currentRecords = artists.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(artists.length / recordsPerPage);
 
   //TODO need to export this function to a separate file
   const searchArtists = async (e, newOffset = 0) => {
@@ -47,10 +55,15 @@ const SearchParams = ({ token }) => {
       <div className="mt-4">
         <Results
           hasBeenRun={hasBeenRun}
-          artists={artists}
+          artists={currentRecords}
           offset={offset}
           setOffset={setOffset}
           searchArtists={searchArtists}
+        />
+        <Pagination
+          nPages={nPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
     </div>

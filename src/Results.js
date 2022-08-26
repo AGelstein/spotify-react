@@ -1,21 +1,7 @@
 import Artist from "./Artist";
-import Pagination from "./Pagination";
-import { useState } from "react";
 
 const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
   console.log(artists);
-
-  // User is currently on this page
-  const [currentPage, setCurrentPage] = useState(1);
-  // No of Records to be displayed on each page
-  const [recordsPerPage] = useState(10);
-  const indexOfLastRecord = currentPage * recordsPerPage;
-  const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-
-  // Records to be displayed on the current page
-  const currentRecords = artists.slice(indexOfFirstRecord, indexOfLastRecord);
-
-  const nPages = Math.ceil(artists.length / recordsPerPage);
 
   const pageFwd = (e) => {
     e.preventDefault();
@@ -55,11 +41,6 @@ const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
         // TODO: remove the button code below
         // TODO: pass relevant params
       >
-        <Pagination
-          nPages={nPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
         <button onClick={(e) => pageBack(e)} className="btn-primary">
           Prev
         </button>

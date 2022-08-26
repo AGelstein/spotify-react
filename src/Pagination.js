@@ -1,28 +1,5 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-
-const Pagination = (
-  nPages = { nPages },
-  currentPage = { currentPage },
-  setCurrentPage = { setCurrentPage }
-) => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage] = useState(10);
+const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
   const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
-
-  // useEffect(() => {
-  //   axios
-  //     .get("MOCK_DATA.json")
-  //     .then((res) => {
-  //       setData(res.data);
-  //       setLoading(false);
-  //     })
-  //     .catch(() => {
-  //       alert("There was an error while retrieving the data");
-  //     });
-  // }, []);
 
   const nextPage = () => {
     if (currentPage !== nPages) setCurrentPage(currentPage + 1);
@@ -30,8 +7,36 @@ const Pagination = (
   const prevPage = () => {
     if (currentPage !== 1) setCurrentPage(currentPage - 1);
   };
-
-  return <div></div>;
+  return (
+    <nav>
+      <ul className="pagination justify-content-center">
+        <li className="page-item">
+          <button className="page-link" onClick={prevPage} href="#">
+            Previous
+          </button>
+        </li>
+        {pageNumbers.map((pgNumber) => (
+          <li
+            key={pgNumber}
+            className={`page-item ${currentPage == pgNumber ? "active" : ""} `}
+          >
+            <button
+              onClick={() => setCurrentPage(pgNumber)}
+              className="page-link"
+              href="#"
+            >
+              {pgNumber}
+            </button>
+          </li>
+        ))}
+        <li className="page-item">
+          <button className="page-link" onClick={nextPage} href="#">
+            Next
+          </button>
+        </li>
+      </ul>
+    </nav>
+  );
 };
 
 export default Pagination;
