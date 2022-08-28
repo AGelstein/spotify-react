@@ -14,6 +14,7 @@ const SearchParams = ({ token }) => {
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = artists.slice(indexOfFirstRecord, indexOfLastRecord);
+  console.log(artists);
   const nPages = Math.ceil(artists.length / recordsPerPage);
 
   //TODO need to export this function to a separate file
@@ -28,7 +29,7 @@ const SearchParams = ({ token }) => {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        limit: 6,
+        limit: 20,
         offset: newOffset,
         q: searchKey,
         type: "artist",

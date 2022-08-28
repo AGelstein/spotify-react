@@ -1,12 +1,16 @@
 const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
+  console.log(nPages);
   const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
 
   const nextPage = () => {
     if (currentPage !== nPages) setCurrentPage(currentPage + 1);
+    console.log({ currentPage });
+    console.log({ nPages });
   };
   const prevPage = () => {
     if (currentPage !== 1) setCurrentPage(currentPage - 1);
   };
+
   return (
     <nav>
       <ul className="pagination justify-content-center">

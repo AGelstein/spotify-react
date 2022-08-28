@@ -1,8 +1,6 @@
 import Artist from "./Artist";
 
 const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
-  console.log(artists);
-
   const pageFwd = (e) => {
     e.preventDefault();
     searchArtists(e, offset + 6);
@@ -10,7 +8,6 @@ const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
 
   const pageBack = (e) => {
     e.preventDefault();
-    console.log("childoffset", offset);
     searchArtists(e, offset - 6);
   };
 
