@@ -13,7 +13,6 @@ const SearchParams = ({ token }) => {
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentRecords = artists.slice(indexOfFirstRecord, indexOfLastRecord);
-  console.log(artists);
   const nPages = Math.ceil(artists.length / recordsPerPage);
 
   //TODO need to export this function to a separate file
@@ -51,15 +50,9 @@ const SearchParams = ({ token }) => {
           Search
         </button>
       </form>
-      <div className="mt-4">
+      <div className="mt-4 ">
         <Results hasBeenRun={hasBeenRun} artists={currentRecords} />
-        <div
-          className={
-            artists.length === 0
-              ? "invisible"
-              : "flex space-x-4 justify-between mt-4"
-          }
-        >
+        <div className={artists.length === 0 ? "invisible" : "visible mt-4"}>
           <Pagination
             nPages={nPages}
             currentPage={currentPage}
