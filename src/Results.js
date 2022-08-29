@@ -1,16 +1,6 @@
 import Artist from "./Artist";
 
-const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
-  const pageFwd = (e) => {
-    e.preventDefault();
-    searchArtists(e, offset + 6);
-  };
-
-  const pageBack = (e) => {
-    e.preventDefault();
-    searchArtists(e, offset - 6);
-  };
-
+const Results = ({ hasBeenRun, artists }) => {
   return (
     <div>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -28,22 +18,6 @@ const Results = ({ hasBeenRun, artists, offset, searchArtists }) => {
             );
           })
         )}
-      </div>
-      <div
-        className={
-          artists.length === 0
-            ? "invisible"
-            : "flex space-x-4 justify-between mt-4"
-        }
-        // TODO: remove the button code below
-        // TODO: pass relevant params
-      >
-        <button onClick={(e) => pageBack(e)} className="btn-primary">
-          Prev
-        </button>
-        <button onClick={(e) => pageFwd(e)} className=" btn-primary">
-          Next
-        </button>
       </div>
     </div>
   );

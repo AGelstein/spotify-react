@@ -7,7 +7,6 @@ const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
   const [hasBeenRun, setHasBeenRun] = useState(false);
-  const [offset, setOffset] = useState(0);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
@@ -29,7 +28,7 @@ const SearchParams = ({ token }) => {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        limit: 20,
+        limit: 50,
         offset: newOffset,
         q: searchKey,
         type: "artist",
@@ -37,7 +36,6 @@ const SearchParams = ({ token }) => {
     });
 
     setArtists(data.artists.items);
-    setOffset(newOffset);
     setHasBeenRun(true);
   };
 
@@ -54,18 +52,20 @@ const SearchParams = ({ token }) => {
         </button>
       </form>
       <div className="mt-4">
-        <Results
-          hasBeenRun={hasBeenRun}
-          artists={currentRecords}
-          offset={offset}
-          setOffset={setOffset}
-          searchArtists={searchArtists}
-        />
-        <Pagination
-          nPages={nPages}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
+        <Results hasBeenRun={hasBeenRun} artists={currentRecords} />
+        <div
+          className={
+            artists.length === 0
+              ? "invisible"
+              : "flex space-x-4 justify-between mt-4"
+          }
+        >
+          <Pagination
+            nPages={nPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
       </div>
     </div>
   );
