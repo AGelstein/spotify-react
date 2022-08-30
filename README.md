@@ -1,3 +1,5 @@
+run npm i in the terminal, then run start script
+
 Objective: create a react tailwindcss app that authenticates through Spotify with pure react paging.
 
 v2 Objectives:
