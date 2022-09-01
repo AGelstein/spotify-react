@@ -22,7 +22,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             <li
               key={pgNumber}
               className={`page-item ${
-                currentPage == pgNumber ? "active" : ""
+                currentPage == pgNumber ? "text-blue-600 font-bold" : ""
               } `}
             >
               <button onClick={() => setCurrentPage(pgNumber)} href="#">
