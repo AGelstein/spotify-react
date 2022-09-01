@@ -5,7 +5,7 @@ Objective: create a react tailwindcss app that authenticates through Spotify wit
 v2 Objectives:
 [ ] fix login state issues
 [ ] fix any existing tailwindcss breaks issues
-[ ] upgrade paging to be numbers rather than just fwd and back
+[x] upgrade paging to be numbers rather than just fwd and back
 [ ] implement code splitting via some sort of paging
 [ ] interegrate the playlist update rest call to add a song to an existing playlist
 
