@@ -6,6 +6,7 @@ const Page = () => {
   const [token, setToken] = useState(null);
 
   useEffect(() => {
+    localStorage.removeItem("token");
     const hash = window.location.hash;
     let newToken = window.localStorage.getItem("token");
 
