@@ -3,7 +3,7 @@ run npm i in the terminal, then run start script
 Objective: create a react tailwindcss app that authenticates through Spotify with pure react paging.
 
 v2 Objectives:
-[ ] fix login state issues
+[x] fix login state issues
 [ ] fix any existing tailwindcss breaks issues
 [x] upgrade paging to be numbers rather than just fwd and back
 [ ] implement code splitting via some sort of paging
