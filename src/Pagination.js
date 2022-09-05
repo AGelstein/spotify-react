@@ -18,7 +18,6 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
             </button>
           </li>
           {pageNumbers.map((pgNumber) => (
-            // TODO the active state for the pagination below does not work
             <li
               key={pgNumber}
               className={`page-item ${

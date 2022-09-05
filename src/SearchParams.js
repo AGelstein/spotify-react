@@ -40,7 +40,10 @@ const SearchParams = ({ token }) => {
 
   return (
     <div className="my-0 mx-auto w-11/12">
-      <form onSubmit={(e) => searchArtists(e, 0)}>
+      <form
+        onSubmit={(e) => searchArtists(e, 0)}
+        className="flex justify-center items-center"
+      >
         <input
           type="text"
           className="h-8 pt-1"

@@ -10,7 +10,7 @@ const Header = ({ token, setToken }) => {
   };
 
   return (
-    <div className="fixed bg-blue-600 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center">
+    <div className="bg-blue-600 shadow-md  z-50 w-full px-5 py-2 flex justify-between items-center">
       <router-link to="/" class="text-2xl text-white">
         Spotify React App
       </router-link>

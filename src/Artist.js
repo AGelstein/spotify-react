@@ -10,9 +10,7 @@ const Artist = (props) => {
           alt=""
         />
       ) : (
-        <div className="object-cover object-center w-full h-full">
-          No Artist Image Available
-        </div>
+        <div className="bg-white w-full h-full">No Artist Image Available</div>
       )}
       {name}
     </div>
