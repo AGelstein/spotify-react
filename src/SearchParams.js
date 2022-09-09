@@ -8,6 +8,8 @@ const SearchParams = ({ token }) => {
   const [artists, setArtists] = useState([]);
   const [hasBeenRun, setHasBeenRun] = useState(false);
 
+  // const [playlists, setPlaylists] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [recordsPerPage] = useState(10);
   const indexOfLastRecord = currentPage * recordsPerPage;
@@ -20,7 +22,6 @@ const SearchParams = ({ token }) => {
     if (newOffset < 0) {
       newOffset = 0;
     }
-
     e.preventDefault();
     const { data } = await axios.get("https://api.spotify.com/v1/search", {
       headers: {
@@ -33,17 +34,31 @@ const SearchParams = ({ token }) => {
         type: "artist",
       },
     });
-
     setArtists(data.artists.items);
     setHasBeenRun(true);
   };
 
+  //TODO export this function to more appropriate file
+  const searchPlaylists = async () => {
+    const { data } = await axios.get(
+      "https://api.spotify.com/v1/me/playlists",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          limit: 20,
+          offset: 0,
+        },
+      }
+    );
+    console.log({ data });
+    // setPlaylists(data);
+  };
+
   return (
-    <div className="my-0 mx-auto w-11/12">
-      <form
-        onSubmit={(e) => searchArtists(e, 0)}
-        className="flex justify-center items-center"
-      >
+    <div className="my-0 mx-auto w-11/12 flex justify-center items-center">
+      <form onSubmit={(e) => searchArtists(e, 0)}>
         <input
           type="text"
           className="h-8 pt-1"
@@ -53,6 +68,9 @@ const SearchParams = ({ token }) => {
           Search
         </button>
       </form>
+      <button className="btn-primary ml-2" onClick={searchPlaylists}>
+        View My Playlists
+      </button>
       <div className="mt-4 ">
         <Results hasBeenRun={hasBeenRun} artists={currentRecords} />
         <div className={artists.length === 0 ? "invisible" : "visible mt-4"}>
