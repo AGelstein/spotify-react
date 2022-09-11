@@ -90,8 +90,8 @@ const SearchParams = ({ token }) => {
         <button className="btn-primary ml-2" onClick={searchPlaylists}>
           View My Playlists
         </button>
-        <button className="btn-primary ml-2" onClick={clearResults}>
-          Clear Results
+        <button className="btn-secondary ml-2" onClick={clearResults}>
+          Clear
         </button>
       </div>
       <div className="mt-4 ">
