@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Results from "./Results";
+import ArtistResultsGrid from "./ArtistResultsGrid";
 import Pagination from "./Pagination";
 
 const SearchParams = ({ token }) => {
@@ -72,7 +72,7 @@ const SearchParams = ({ token }) => {
         View My Playlists
       </button>
       <div className="mt-4 ">
-        <Results hasBeenRun={hasBeenRun} artists={currentRecords} />
+        <ArtistResultsGrid hasBeenRun={hasBeenRun} artists={currentRecords} />
         <div className={artists.length === 0 ? "invisible" : "visible mt-4"}>
           <Pagination
             nPages={nPages}
