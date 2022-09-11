@@ -21,6 +21,8 @@ const SearchParams = ({ token }) => {
   const clearResults = () => {
     setArtists([]);
     setPlaylists([]);
+    setHasArtistSearchRun([]);
+    setHasPlaylistSearchRun([]);
   };
 
   //TODO need to export this function to a separate file
