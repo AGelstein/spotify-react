@@ -1,6 +1,6 @@
-import Artist from "./Artist";
+import Playlist from "./Playlist";
 
-const Results = ({ hasBeenRun, artists }) => {
+const PlaylistResultsGrid = ({ hasBeenRun, artists }) => {
   return (
     <div>
       <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -9,7 +9,7 @@ const Results = ({ hasBeenRun, artists }) => {
         ) : (
           artists.map((artist) => {
             return (
-              <Artist
+              <Playlist
                 key={artist.id}
                 images={artist.images}
                 name={artist.name}
@@ -23,4 +23,4 @@ const Results = ({ hasBeenRun, artists }) => {
   );
 };
 
-export default Results;
+export default PlaylistResultsGrid;
