@@ -19,10 +19,18 @@ const SearchParams = ({ token }) => {
   const nPages = Math.ceil(artists.length / recordsPerPage);
 
   const clearResults = () => {
+    clearArtists();
+    clearPlaylists();
+  };
+
+  const clearArtists = () => {
     setArtists([]);
+    setHasArtistSearchRun(false);
+  };
+
+  const clearPlaylists = () => {
     setPlaylists([]);
-    setHasArtistSearchRun([]);
-    setHasPlaylistSearchRun([]);
+    setHasPlaylistSearchRun(false);
   };
 
   //TODO need to export this function to a separate file
@@ -42,9 +50,9 @@ const SearchParams = ({ token }) => {
         type: "artist",
       },
     });
-
     setArtists(data.artists.items);
     setHasArtistSearchRun(true);
+    clearPlaylists();
   };
 
   //TODO export this function to more appropriate file
@@ -63,6 +71,7 @@ const SearchParams = ({ token }) => {
     );
     setPlaylists(data.items);
     setHasPlaylistSearchRun(true);
+    clearArtists();
   };
 
   return (
