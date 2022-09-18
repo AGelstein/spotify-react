@@ -1,5 +1,6 @@
 const Playlist = (props) => {
-  const { images, name } = props;
+  const { id, images, name } = props;
+  console.log(id);
 
   return (
     <div className="relative block bg-white p-3 pb-6">
