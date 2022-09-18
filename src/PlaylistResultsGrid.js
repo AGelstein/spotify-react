@@ -1,6 +1,6 @@
 import Playlist from "./Playlist";
 
-const PlaylistResultsGrid = ({ playlists, hasBeenRun }) => {
+const PlaylistResultsGrid = ({ playlists, hasBeenRun, token }) => {
   return (
     <div>
       <div className="gap-4 max-w-xs">
@@ -14,6 +14,7 @@ const PlaylistResultsGrid = ({ playlists, hasBeenRun }) => {
                 images={playlists.images}
                 name={playlists.name}
                 id={playlists.id}
+                token={token}
               />
             );
           })

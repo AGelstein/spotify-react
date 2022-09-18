@@ -102,6 +102,7 @@ const SearchParams = ({ token }) => {
         <PlaylistResultsGrid
           hasBeenRun={hasPlaylistSearchRun}
           playlists={playlists}
+          token={token}
         />
         <div className={artists.length === 0 ? "invisible" : "visible mt-4"}>
           <Pagination
