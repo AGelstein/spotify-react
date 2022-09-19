@@ -4,6 +4,9 @@ import ArtistResultsGrid from "./ArtistResultsGrid";
 import Pagination from "./Pagination";
 import PlaylistResultsGrid from "./PlaylistResultsGrid";
 
+const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
+const SEARCH_ENDPOINT = "https://api.spotify.com/v1/search";
+
 const SearchParams = ({ token }) => {
   const [searchKey, setSearchKey] = useState("");
   const [artists, setArtists] = useState([]);
@@ -39,7 +42,7 @@ const SearchParams = ({ token }) => {
       newOffset = 0;
     }
     e.preventDefault();
-    const { data } = await axios.get("https://api.spotify.com/v1/search", {
+    const { data } = await axios.get(SEARCH_ENDPOINT, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -57,18 +60,15 @@ const SearchParams = ({ token }) => {
 
   //TODO export this function to more appropriate file
   const searchPlaylists = async () => {
-    const { data } = await axios.get(
-      "https://api.spotify.com/v1/me/playlists",
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          limit: 20,
-          offset: 0,
-        },
-      }
-    );
+    const { data } = await axios.get(PLAYLISTS_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 20,
+        offset: 0,
+      },
+    });
     setPlaylists(data.items);
     setHasPlaylistSearchRun(true);
     clearArtists();
