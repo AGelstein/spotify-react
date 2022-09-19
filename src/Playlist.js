@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Song from "./Song";
 import axios from "axios";
 
 const PLAYLISTS_SONGS_ENDPOINT = "https://api.spotify.com/v1/playlists/";
@@ -17,11 +18,11 @@ const Playlist = (props) => {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        limit: 40,
+        limit: 4,
         offset: 0,
       },
     });
-    setSongs(data);
+    setSongs(data?.tracks?.items);
   }
 
   console.log(songs);
@@ -40,6 +41,7 @@ const Playlist = (props) => {
         </div>
       )}
       {name}
+      <Song />
     </div>
   );
 };
