@@ -25,8 +25,6 @@ const Playlist = (props) => {
     setSongs(data?.tracks?.items);
   }
 
-  console.log(songs);
-
   return (
     <div className="relative block bg-white p-3 pb-6">
       {images.length ? (
@@ -41,7 +39,7 @@ const Playlist = (props) => {
         </div>
       )}
       {name}
-      <Song />
+      <Song songs={songs} />
     </div>
   );
 };
