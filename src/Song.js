@@ -29,7 +29,6 @@ const Song = ({ playlistId, token }) => {
       ) : (
         console.log("song: " + songs.items)
       )}
-      )
     </div>
   );
 };
