@@ -22,9 +22,11 @@ const Song = ({ playlistId, token }) => {
     setSongs(data);
   }
 
+  console.log(songs?.items?.length);
+
   return (
     <div className="relative block bg-white p-3 pb-6">
-      {!songs.items.length ? (
+      {!songs?.items?.length ? (
         <h1>No songs on playlist</h1>
       ) : (
         console.log("song: " + songs)
