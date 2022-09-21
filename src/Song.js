@@ -15,7 +15,7 @@ const Song = ({ playlistId, token }) => {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        limit: 4,
+        limit: 10,
         offset: 0,
       },
     });
@@ -27,7 +27,7 @@ const Song = ({ playlistId, token }) => {
       {!songs.items.length ? (
         <h1>No songs on playlist</h1>
       ) : (
-        console.log("song: " + songs.items)
+        console.log("song: " + songs)
       )}
     </div>
   );
