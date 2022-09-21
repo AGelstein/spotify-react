@@ -15,21 +15,22 @@ const Song = ({ playlistId, token }) => {
         Authorization: `Bearer ${token}`,
       },
       params: {
-        limit: 10,
+        limit: 4,
         offset: 0,
       },
     });
     setSongs(data);
   }
 
-  console.log(songs?.items?.length);
-
   return (
     <div className="relative block bg-white p-3 pb-6">
       {!songs?.items?.length ? (
         <h1>No songs on playlist</h1>
       ) : (
-        console.log("song: " + songs)
+        songs.items.map((song) => {
+          <div key={song.track.id}></div>;
+          console.log(song.track.name);
+        })
       )}
     </div>
   );
