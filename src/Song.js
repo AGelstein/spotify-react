@@ -23,7 +23,7 @@ const Song = ({ playlistId, token }) => {
   }
 
   return (
-    <div className="relative block bg-white p-3 pb-6">
+    <div className="bg-gray-800 w-full p-3 pb-6">
       {!songs?.items?.length ? (
         <h1>No songs on playlist</h1>
       ) : (

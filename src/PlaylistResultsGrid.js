@@ -3,7 +3,7 @@ import Playlist from "./Playlist";
 const PlaylistResultsGrid = ({ playlists, hasBeenRun, token }) => {
   return (
     <div>
-      <div className="gap-4 max-w-xs">
+      <div className="border border-rose-500">
         {!playlists.length && hasBeenRun ? (
           <h1>No playlists Found</h1>
         ) : (
