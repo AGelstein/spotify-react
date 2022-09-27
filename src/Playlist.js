@@ -1,17 +1,45 @@
-import Song from "./Song";
+import { useState } from "react";
+import axios from "axios";
 
 const Playlist = (props) => {
   const { id, images, name, token } = props;
+  const SONGS_ENDPOINT = "https://api.spotify.com/v1/playlists/";
+  // eslint-disable-next-line no-unused-vars
+  const [songs, setSongs] = useState([]);
+
+  async function requestSongs() {
+    const { data } = await axios.get(SONGS_ENDPOINT + id + "/tracks", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      params: {
+        limit: 4,
+        offset: 0,
+      },
+    });
+    setSongs(data);
+  }
 
   return (
     <div className="flex space-x-4 w-full">
       <div className="block bg-white p-3 pb-6">
         {images.length ? (
-          <img
-            className="object-cover object-center w-full h-full"
-            src={images[0].url}
-            alt=""
-          />
+          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              requestSongs();
+              console.log("onclick worked");
+            }}
+            onKeyDown={() => requestSongs()}
+          >
+            <img
+              className="object-cover object-center w-full h-full"
+              src={images[0].url}
+              alt=""
+            />
+          </div>
         ) : (
           <div className="bg-white w-full h-full">
             No Playlist Image Available
@@ -19,7 +47,6 @@ const Playlist = (props) => {
         )}
         {name}
       </div>
-      <Song playlistId={id} className="" token={token} />
     </div>
   );
 };
