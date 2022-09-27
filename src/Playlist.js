@@ -30,7 +30,6 @@ const Playlist = (props) => {
             tabIndex={0}
             onClick={() => {
               requestSongs();
-              console.log("onclick worked");
             }}
             onKeyDown={() => requestSongs()}
           >
