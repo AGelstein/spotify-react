@@ -20,6 +20,12 @@ const Playlist = (props) => {
     setSongs(data);
   }
 
+  if (songs.items) {
+    songs.items.forEach((song) => {
+      console.log(song.track.name);
+    });
+  }
+
   return (
     <div className="flex space-x-4 w-full">
       <div className="block bg-white p-3 pb-6">
