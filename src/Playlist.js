@@ -44,6 +44,14 @@ const Playlist = (props) => {
               src={images[0].url}
               alt=""
             />
+            <div>
+              {songs.items.forEach((song) => {
+                return (
+                  // eslint-disable-next-line jsx-a11y/heading-has-content
+                  <h1>{song.track.name}</h1>
+                );
+              })}
+            </div>
           </div>
         ) : (
           <div className="bg-white w-full h-full">
