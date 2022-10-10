@@ -20,12 +20,6 @@ const Playlist = (props) => {
     setSongs(data);
   }
 
-  if (songs.items) {
-    songs.items.forEach((song) => {
-      console.log(song.track.name);
-    });
-  }
-
   return (
     <div className="flex space-x-4 w-full">
       <div className="block bg-white p-3 pb-6">
@@ -46,10 +40,10 @@ const Playlist = (props) => {
             />
             <div>
               {songs.items ? (
-                songs.items.forEach((song) => {
+                songs.items.map((song) => {
                   return (
                     // eslint-disable-next-line jsx-a11y/heading-has-content
-                    <h1>{song.track.name}</h1>
+                    <h1 key={song.track.id}>{song.track.name}</h1>
                   );
                 })
               ) : (
