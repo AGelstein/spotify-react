@@ -4,7 +4,6 @@ import axios from "axios";
 const Playlist = (props) => {
   const { id, images, name, token } = props;
   const SONGS_ENDPOINT = "https://api.spotify.com/v1/playlists/";
-  // eslint-disable-next-line no-unused-vars
   const [songs, setSongs] = useState([]);
 
   async function requestSongs() {
@@ -24,7 +23,6 @@ const Playlist = (props) => {
     <div className="flex space-x-4 w-full">
       <div className="block bg-white p-3 pb-6">
         {images.length ? (
-          // eslint-disable-next-line jsx-a11y/no-static-element-interactions
           <div
             role="button"
             tabIndex={0}
@@ -41,10 +39,7 @@ const Playlist = (props) => {
             <div>
               {songs.items ? (
                 songs.items.map((song) => {
-                  return (
-                    // eslint-disable-next-line jsx-a11y/heading-has-content
-                    <h1 key={song.track.id}>{song.track.name}</h1>
-                  );
+                  return <h1 key={song.track.id}>{song.track.name}</h1>;
                 })
               ) : (
                 <h1>No songs available</h1>
