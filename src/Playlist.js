@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SongGrid from "./SongGrid";
 import axios from "axios";
 
 const Playlist = (props) => {
@@ -37,10 +38,9 @@ const Playlist = (props) => {
               alt=""
             />
             <div>
+              {/* make sure not to run this unless the items are new because this is an expensive */}
               {songs.items ? (
-                songs.items.map((song) => {
-                  return <h1 key={song.track.id}>{song.track.name}</h1>;
-                })
+                <SongGrid songs={songs} />
               ) : (
                 <h1>No songs available</h1>
               )}
