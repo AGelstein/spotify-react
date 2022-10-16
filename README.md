@@ -7,6 +7,8 @@ v2 Objectives:
 [x] fix any existing tailwindcss breaks issues
 [x] upgrade paging to be numbers rather than just fwd and back
 [x] create ability to read existing logged in users' playlists
+
+[ ] display first 4 songs from play list next to playlist picture
 [ ] interegrate the playlist update rest call to add a song to an existing playlist
 [ ] get token from local storage rather than drill that prop
 [ ] fix login token clearing out every single time the page is or reloaded
